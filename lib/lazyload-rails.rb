@@ -51,7 +51,7 @@ ActionView::Helpers::AssetTagHelper.module_eval do
   def to_lazy(image_html)
     img = Nokogiri::HTML::DocumentFragment.parse(image_html).at_css("img")
 
-    img["data-original"] = img["src"]
+    img["data-src"] = img["src"]
     img["src"] = Lazyload::Rails.configuration.placeholder
 
     img.to_s.html_safe
